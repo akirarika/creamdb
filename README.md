@@ -12,6 +12,12 @@ CreamDB 可以帮助你轻易地在客户端存储数据，并且，你可以订
 
 如果你想制作一个 Electron 应用，请确保 CreamDB 运行在主进程而非渲染进程中，且只允许同时启动一个 Electron 进程。你可以使用 [Milkio](https://milkio.fun/) 来开发你的 Electron 应用，它解决了主进程和渲染进程之间的通信很麻烦的事情，并且在默认情况下，限制了你只能同时运行一个 Electron 进程。
 
+## 安装
+
+```sh
+npm i creamdb
+```
+
 ## 使用
 
 我们需要向 CreamDB 传递一个 `storage` 对象，来决定如何持久化你的数据，因为不同的平台下方式都不同。你可以安装一个适用于你平台的 `localStorage` 的 Polyfill，并传递给 Milkio：
