@@ -4,7 +4,7 @@ CreamDB 是一个轻量级的客户端 "数据库"，可以运行在任何能够
 
 它是为包括 Electron、VS Code Extension、React Native、Capacitor、Taro、MiniProgram 等环境而设计的。这些环境，使我们可以使用 JavaScript/TypeScript 开发适用于桌面或移动设备的应用程序。
 
-CreamDB 可以帮助你轻易地在客户端存储数据，并且，你可以订阅这些数据的更改。
+CreamDB 可以帮助你在客户端持久化式地存储数据，并且，你可以订阅这些数据的更改。
 
 ## 注意事项
 
