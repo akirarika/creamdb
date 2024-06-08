@@ -1,0 +1,37 @@
+{
+  "name": "creamdb",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./lib/creamdb.umd.cjs",
+  "module": "./lib/creamdb.js",
+  "typings": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/creamdb.js",
+      "require": "./lib/creamdb.umd.cjs",
+      "types": "./lib/index.d.ts"
+    }
+  },
+  "files": [
+    "/lib",
+    "LICENSE",
+    "/README.md"
+  ],
+  "scripts": {
+    "dev": "vitest --ui",
+    "test": "vitest",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@vitest/ui": "^1.6.0",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.13",
+    "vite-plugin-dts": "^3.9.1",
+    "vitest": "^1.6.0"
+  },
+  "dependencies": {
+    "@southern-aurora/tson": "^2.0.2",
+    "@types/node": "^20.14.2"
+  }
+}
