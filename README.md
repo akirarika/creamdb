@@ -167,6 +167,22 @@ await db.watchKey("history", "https://milkio.fun", () => {
 });
 ```
 
+## 多实例
+
+如果你想创建多个实例，可以通过设置 `name` 来使他们之间的数据是相互独立的。
+
+```ts
+const db1 = await defineCreamDB<Tables>({
+    name: "db1",
+    ...
+});
+
+const db2 = await defineCreamDB<Tables>({
+    name: "db2",
+    ...
+});
+```
+
 ## API
 
 CreamDB 的每张表都有许多实用方法，帮助你更好的处理数据。
