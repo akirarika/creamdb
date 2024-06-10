@@ -267,7 +267,7 @@ sortBy: (compareFn: (a: any, b: any) => number) => Creamap<T>;
 
 ### paginate
 
-以分页的形式读取表中的数据。
+以分页的形式读取表中的数据，如果你需要对结果进行排序，你可以先使用 `sortBy`。
 
 ```ts
 paginate: (currentPpage: number, num: number, compareFn?: (a: any, b: any) => number) => Creamap<T>;
