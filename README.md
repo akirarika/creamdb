@@ -70,13 +70,13 @@ const db = await defineCreamDB<Tables>({ ... });
 现在，我们可以设置它：
 
 ```ts
-db.history.set("@", { darkMode: true });
+db.config.set("@", { darkMode: true });
 ```
 
 也可以读取它：
 
 ```ts
-db.history.get("@"); // { darkMode: true }
+db.config.get("@"); // { darkMode: true }
 ```
 
 上面的代码中，键为什么是 `@`？这是因为每张表实际上是一个集合，你可以把每张表想象成一个 "对象"，这意味着你可以在表中存储多条相同格式的数据，并以 "键" 来区分他们。对于像配置等表，我们可以预见的是，我们只会存储一条数据，因此，我们约定俗成，使用 `@` 来表示这条数据。
