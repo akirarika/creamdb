@@ -128,7 +128,7 @@ console.log(db.history.get(url)); // { title: "Milkio", url: "https://milkio.fun
 </template>
 ```
 
-注意，CreamDB 毕竟是运行在前端中的 "数据库"，如果用户有非常多的历史记录，那么就会造成渲染太多的 DOM，这会导致性能问题。
+注意，CreamDB 毕竟是运行在前端中的 "数据库"，如果用户有非常多的历史记录，那么就会造成渲染太多的 DOM，这会导致性能问题。你可以编写一些策略，例如，保持只有 100 条最近的历史记录。
 
 ## 订阅
 
