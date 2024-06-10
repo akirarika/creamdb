@@ -107,6 +107,9 @@ db.history.set(url, { title, url, readAt });
 console.log(db.history.get(url)); // { title: "Milkio", url: "https://milkio.fun", readAt: 1680000000000 }
 ```
 
+如果你不知道有什么合适的值可以当作键，你也可以使用一些全局唯一 ID 生成器，例如 [cuid2](https://github.com/paralleldrive/cuid2)
+、[nanoid](https://github.com/ai/nanoid)、[ulid](https://github.com/perry-mitchell/ulidx) 来生成。
+
 ## 渲染
 
 我们需要在历史记录页面，显示所有的记录。我们的表拥有迭代器，因此，我们可以在视图中轻松地遍历它，以 Vue 为例：
