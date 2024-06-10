@@ -8,9 +8,9 @@ CreamDB 可以帮助你在客户端持久化式地存储数据，并且，你可
 
 ## 注意事项
 
-不建议在普通的浏览器网页中使用 CreamDB。因为如果用户打开了多个网页，那么不同网页间的 CreamDB 数据将互相覆盖。这种情况下，[RxDB](https://rxdb.info/) 是一个更好的选择。
+CreamDB 假设你只有一个 "标签页"。当你同时打开多个"标签页"时，CreamDB 的数据将会相互覆盖。这意味着，如果你使用 Electron 时，需要限制用户只能打开一个进程，且你的 CreamDB 位于主进程中。如果你需要处理多"标签页"间数据同步的情况，这种情况下，[RxDB](https://rxdb.info/) 是一个更好的选择，事实上，我们也更推荐你使用它。CreamDB 创作的初衷，是因为 RxDB 使用起来较为繁琐，对于开发一些轻量级的 Electron 用例时，你可以使用 CreamDB 而不需要购买 RxDB 的付费套餐。并且，目前 RxDB 不支持 React Native、Capacitor、Taro、MiniProgram 等环境。
 
-如果你想制作一个 Electron 应用，请确保 CreamDB 运行在主进程而非渲染进程中，且只允许同时启动一个 Electron 进程。你可以使用 [Milkio](https://milkio.fun/) 来开发你的 Electron 应用，它解决了主进程和渲染进程之间的通信很麻烦的事情，并且在默认情况下，限制了你只能同时运行一个 Electron 进程。
+如果你想制作一个 Electron 应用，你可以使用 [Milkio](https://milkio.fun/) 来开发你的 Electron 应用，它解决了主进程和渲染进程之间的通信很麻烦的事情。
 
 ## 安装
 
@@ -58,7 +58,30 @@ const db = await defineCreamDB<Tables>({
 
 ## 入门
 
-假设，我们需要记录用户最近看过的文章，我们可以添加一张 `history` 表，并设置这张表中的数据的格式。
+假设，我们要存储用户的配置，我们可以添加一张 `config` 表，并设置这张表中的数据的格式。其中，可以设置是否开启黑暗模式。
+
+```ts
+type Tables = {
+    config: { darkMode: boolean }
+}
+const db = await defineCreamDB<Tables>({ ... });
+```
+
+现在，我们可以设置它：
+
+```ts
+db.history.set("@", { darkMode: true });
+```
+
+也可以读取它：
+
+```ts
+db.history.get("@"); // { darkMode: true }
+```
+
+上面的代码中，键为什么是 `@`？这是因为每张表实际上是一个集合，你可以把每张表想象成一个 "对象"，这意味着你可以在表中存储多条相同格式的数据，并以 "键" 来区分他们。对于像配置等表，我们可以预见的是，我们只会存储一条数据，因此，我们约定俗成，使用 `@` 来表示这条数据。
+
+现在，我们来看一个存储多条的示例：假设，我们需要记录用户最近看过的文章，我们可以添加一张 `history` 表，并设置这张表中的数据的格式。
 
 ```ts
 type Tables = {
